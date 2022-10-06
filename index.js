@@ -5,15 +5,14 @@ const FileSync = require("lowdb/adapters/FileSync")
 const bodyParser = require("body-parser")
 const { nanoid } = require("nanoid")
 const db = lowDb(new FileSync('db.json'))
-
+const host = '0.0.0.0'
+const PORT = process.env.port | 4000
 db.defaults({ notes: [] }).write()
 
 const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
-
-const PORT = 4000;
 
 app.get('/', (req, res) => {
   res.send("Server is running")
@@ -32,6 +31,6 @@ app.post('/notes/new', (req, res) => {
   res.json({ success: true })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT,host, () => {
   console.log(`Backend is running on http://localhost:${PORT}`)
 })
