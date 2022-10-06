@@ -16,6 +16,10 @@ app.use(bodyParser.json())
 
 const PORT = 4000;
 
+app.get('/', (req, res) => {
+  res.send("Server is running")
+})
+
 app.get('/notes', (req, res) => {
   const data = db.get("notes").value()
   return res.json(data)
@@ -29,6 +33,6 @@ app.post('/notes/new', (req, res) => {
   res.json({ success: true })
 })
 
-app.listen(PORT, ()=> {
+app.listen(PORT, () => {
   console.log(`Backend is running on http://localhost:${PORT}`)
 })
