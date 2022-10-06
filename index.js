@@ -4,8 +4,8 @@ const lowDb = require("lowdb")
 const FileSync = require("lowdb/adapters/FileSync")
 const bodyParser = require("body-parser")
 const { nanoid } = require("nanoid")
-
-const db = lowDb(new FileSync('db.json'))
+const path = require("path")
+const db = lowDb(new FileSync(path.join(__dirname,'db.json')))
 
 db.defaults({ notes: [] }).write()
 
