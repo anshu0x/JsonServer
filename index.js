@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 const { nanoid } = require("nanoid")
 const db = lowDb(new FileSync('db.json'))
 const host = '0.0.0.0'
-const PORT = process.env.port | 4000
+const PORT = process.env.PORT | 4000
 db.defaults({ notes: [] }).write()
 
 const app = express()
